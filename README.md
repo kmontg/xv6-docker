@@ -1,3 +1,6 @@
+WARNING: This repo still uses the (now deprecated) x86 version of xv6. It was developed to make playing around with the code a bit easier for Mac users, but the riscv version of xv6 can be run much more easily on Mac now than the x86 version.
+
+
 # xv6-docker
 Follow along with the MIT Operating Systems course (https://pdos.csail.mit.edu/6.828/2017/) for learning more about kernel and os development. This repo contains a dockerized environment for developing and debugging to xv6 kernel, with a few utilities to make things easier to get started.
 
@@ -24,7 +27,7 @@ docker run --rm -it xv6
 This will launch a shell inside the container connected to your terminal. Note that any changes you make to the source code will not be persisted across container re-starts. To edit the files locally, run the following:
 
 ```bash
-docker run --rm -it -v $PWD/jos:/jos xv6
+docker run --rm -it -v $PWD/xv6-public:/xv6-public xv6
 ```
 
 You'll notice from the Dockerfile that tmux was added as an extra utility. This facilitates launching both qemu and gdb from seperate windows/panes for quickly inspecting instructions as the kernel is running.
