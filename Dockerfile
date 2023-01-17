@@ -2,28 +2,15 @@ FROM ubuntu:latest
 
 RUN apt-get -qq update
 
-RUN apt-get install -y git \
+RUN apt-get install -y \
                     build-essential \
                     gdb \
-                    gcc-multilib \
-                    tmux
+                    gcc-multilib-x86-64-linux-gnu \
+                    tmux \
+                    qemu-system-x86
 
-RUN git clone http://web.mit.edu/ccutler/www/qemu.git -b 6.828-2.3.0
+ADD ./xv6-public /xv6-public
 
-RUN apt-get install -y libsdl1.2-dev \
-                        libtool-bin \
-                        libglib2.0-dev \
-                        libz-dev \
-                        libpixman-1-dev
-
-RUN cd qemu && \
-        ./configure --disable-kvm --target-list="i386-softmmu x86_64-softmmu" && \
-        make && \
-        make install && \
-        cd ..
-
-ADD ./jos jos
-
-WORKDIR jos
+WORKDIR /xv6-public
 
 CMD ["sh"]
