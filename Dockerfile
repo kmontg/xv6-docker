@@ -1,8 +1,9 @@
 FROM ubuntu:18.04
 
-ENV TZ="America/New_York"
-
-RUN apt-get -qq update
+RUN apt-get -qq update && \
+    apt-get install -yq tzdata && \
+    ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
 
 RUN apt-get install -y \
                     build-essential \
