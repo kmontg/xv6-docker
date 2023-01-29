@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 
 RUN apt-get -qq update
 
@@ -13,4 +13,6 @@ ADD ./xv6-public /xv6-public
 
 WORKDIR /xv6-public
 
-CMD ["sh"]
+ENV TOOLPREFIX=x86_64-linux-gnu-
+
+CMD ["/bin/bash"]
